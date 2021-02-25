@@ -73,4 +73,6 @@ def valoracionMedica(request, id):
 
     return render(request,'valoracion_medica.html',contexto)
 
+def preciosView(request):
+    return render(request, 'precios.html')
 

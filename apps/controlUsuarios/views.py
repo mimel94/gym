@@ -55,7 +55,10 @@ def eliminarUsuario(request, id):
 
 def valoracionMedica(request, id):
     usuario = Usuario.objects.get(numero_documento = id)
-    valoracion = ValoracionMedica.objects.get(usuario=usuario)
+    try:
+        valoracion = ValoracionMedica.objects.get(usuario=usuario)
+    except:
+        valoracion = None
     if request.method == 'GET':            
         form = valoracionMedicaForm(instance=valoracion)
         contexto = {

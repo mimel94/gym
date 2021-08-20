@@ -14,7 +14,10 @@ class Sucursal(models.Model):
     def __str__(self):
         return self.nombre
     
-    nombre = models.CharField( max_length=50 )    
+    nombre = models.CharField(default = "",max_length=50 )
+    direccion = models.CharField(default = "",max_length=250)
+    telefono = models.CharField(default = "",max_length=250)    
+    estado = models.BooleanField(default=True)    
  
 class Usuario(models.Model):
 
@@ -34,6 +37,7 @@ class Usuario(models.Model):
     plan = models.ForeignKey(Plan,on_delete=models.CASCADE)
     ocupacion = models.CharField( max_length=50 )            
     sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
+    entrenador = models.BooleanField(default="False")
     estado = models.BooleanField("estado", default= True)
     
 class ValoracionMedica(models.Model):  

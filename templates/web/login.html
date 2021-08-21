@@ -1,0 +1,33 @@
+{% extends 'web/index.html' %}
+{% block titulo%}Crear Titulo {% endblock titulo%}
+{% block cuerpo%}    
+    <section class="text-center d-flex justify-content-center">
+        <div class="w-25 p-3">
+            <form class="form-signin" method="POST">
+            {% csrf_token %}           
+            
+            <img class="mb-4" src="/static/img/user.svg" alt="" width="72" height="72">            
+            <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>                      
+            {% if request.method == 'POST' %}
+
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>    
+                    <strong>Error:</strong>Usuario o contraseña invalida
+                </div>                
+            {% endif %}
+            <label for="inputEmail" class="sr-only">Usuario</label>            
+            {{ form.username}}
+            {{ form.username.error }}
+            <br>
+            <label for="inputPassword" class="sr-only">Contraseña</label>
+            {{ form.password}} 
+            <br>      
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar</button>       
+
+            </form>
+        </section>
+    </div>  
+
+{%endblock cuerpo%}

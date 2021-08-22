@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario, ValoracionMedica
+from .models import Sucursal, Usuario, ValoracionMedica
 from django.contrib.auth.forms import AuthenticationForm
 
 class FormularioLogin(AuthenticationForm):
@@ -22,6 +22,18 @@ class controlUsuarioForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
+        fields = '__all__'
+
+class SucursalForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SucursalForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs = {
+                'class': 'form-control'
+            }
+
+    class Meta:
+        model = Sucursal
         fields = '__all__'
 
 class valoracionMedicaForm(forms.ModelForm):

@@ -1,0 +1,38 @@
+{% extends 'dashboard/index.html' %}
+{% block titulo%}Crear Titulo {% endblock titulo%}
+{% block cuerpo%}
+<section id="formulario">  
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr align="center">          
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">telefono</th>            
+            <th scope="col">Estado</th>          
+            <th scope="col">Actualizar</th>                      
+          </tr>
+        </thead>
+        <tbody>
+            
+          {% for sucursal in object_list %}
+          <tr align="center">          
+            <td>{{sucursal.nombre}}</td>
+            <td>{{sucursal.direccion}}</td>
+            <td>{{sucursal.telefono}}</td>           
+            <td>{% if sucursal.estado %} activo {% else %}inactivo {% endif%}</td>            
+            <td ><a href="{% url 'actualizar_sucursal' sucursal.pk %}"><i class="material-icons">loop</i></a></td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+</section>
+</section>
+
+
+
+
+
+{%endblock cuerpo%}

@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'powergym',
         'USER': 'postgres',
-        'PASSWORD': 'abcd.1234',
+        'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': 5432
     }

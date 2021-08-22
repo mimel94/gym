@@ -17,6 +17,20 @@ a {
   color: #e96b56;
 }
 
+.form-control{
+  border: 1.2px solid black !important;
+}
+.form-control::placeholder{
+  font-size: 12px !important;
+}
+.form-control:focus{
+  border: 2px solid black !important;
+  color: black !important;
+}
+.p-login{
+  font-size: 12px !important;
+}
+
 a:hover {
   color: #e6573f;
   text-decoration: none;

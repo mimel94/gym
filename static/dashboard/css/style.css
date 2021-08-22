@@ -1338,6 +1338,8 @@ pre {
     margin-left: 91.66667%; } }
 
 .table {
+  border: 1.2px solid #BDBDC7;
+  border-radius: 5px !important;
   width: 100%;
   margin-bottom: 1rem;
   color: #BDBDC7; }
@@ -8060,7 +8062,7 @@ a {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #343957;
+  background-color: #363740;
   transition: all .2s ease;
   z-index: 4; }
   .nav-header .logo-abbr {
@@ -10315,7 +10317,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   top: 5rem;
   padding-top: 0;
   z-index: 2;
-  background-color: #343957;
+  background-color: #363740;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   transition: all .2s ease; }
   .quixnav .quixnav-scroll {
@@ -16681,7 +16683,8 @@ button {
 
 .table th,
 .table td {
-  border-color: #eaeaea; }
+  border-color: #eaeaea;
+}
   [data-theme-version="dark"] .table th, [data-theme-version="dark"] .table td {
     border-color: #424D63; }
 
@@ -16691,15 +16694,21 @@ button {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  border-color: #eaeaea; }
+  border-color: #eaeaea; 
+  background-color: #EBECF1;}
   [data-theme-version="dark"] .table thead th {
     border-color: #424D63; }
 
+
 .table tbody tr td {
   vertical-align: middle;
-  border-color: #eaeaea; }
+  border-color: #eaeaea; 
+  background-color: white;
+  color: #000000;
+}
   [data-theme-version="dark"] .table tbody tr td {
-    border-color: #424D63; }
+    border-color: #424D63; 
+  }
 
 .table:not(.table-bordered) thead th {
   border-top: none; }

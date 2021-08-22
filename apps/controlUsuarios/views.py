@@ -51,13 +51,13 @@ class CrearUsuario(CreateView):
     model = Usuario
     template_name = 'dashboard/crear_clientes.html'
     form_class = controlUsuarioForm
-    success_url = reverse_lazy('listar_clientes')
+    success_url = reverse_lazy('dashboard')
 
 class EditarUsuario(UpdateView):
     model = Usuario
     form_class = controlUsuarioForm
     template_name = 'dashboard/actualizar_clientes.html'    
-    success_url = reverse_lazy('listar_clientes')
+    success_url = reverse_lazy('dashboard')
 
 class CrearSucursal(CreateView):
     model = Sucursal

@@ -16,21 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from apps.controlUsuarios.views import inicio, crearUsuario, listarClientes, editarUsuario, eliminarUsuario, valoracionMedica, preciosView,Dashboard, Login, logout_usuario
+from apps.controlUsuarios.views import inicio, CrearUsuario, \
+                                EditarUsuario,\
+                                eliminarUsuario, valoracionMedica, \
+                                preciosView,Dashboard, Login, logout_usuario
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',inicio, name='index'),
-    path('crearUsuario/', crearUsuario, name='crear_usuario'),
-    path('listarUsuario/', listarClientes, name='listar_clientes'),
-    path('actualizarUsuario/<int:id>/', editarUsuario, name='actualizar_usuario'),
+    path("accounts/login/",Login.as_view(),name='login'),
+    path("logout/",login_required(logout_usuario), name="logout"),
+
+    path("dashboard/",Dashboard.as_view(),name="dashboard"),
+    path('dashboard/crearUsuario/', CrearUsuario.as_view(), name='crear_usuario'),    
+    path('dashboard/actualizarUsuario/<int:pk>/', EditarUsuario.as_view(), name='actualizar_usuario'),
     path('eliminarUsuario/<int:id>/', eliminarUsuario, name='eliminar_usuario'),
     path('valoracion_medica/<int:id>/', valoracionMedica, name='valoracion_medica'),
     path('precios/',preciosView, name='precios'),
-    path("accounts/login/",Login.as_view(),name='login'),
-    path("logout/",login_required(logout_usuario), name="logout"),
-    path("dashboard/",Dashboard.as_view(),name="dashboard"),
+  
 
 ]

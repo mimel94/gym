@@ -5,10 +5,10 @@ from django.contrib.auth.forms import AuthenticationForm
 class FormularioLogin(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(FormularioLogin, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs['class']='form-control p-4 input'
-        self.fields['username'].widget.attrs['placeholder']='Nombre de Usuario'
-        self.fields['password'].widget.attrs['class']='form-control p-4 input'
-        self.fields['password'].widget.attrs['placeholder']='Contraseña'
+        self.fields['username'].widget.attrs['class']='p-4 input'
+        self.fields['username'].widget.attrs['placeholder']=''
+        self.fields['password'].widget.attrs['class']='p-4 input'
+        self.fields['password'].widget.attrs['placeholder']='*********'
             
 
 class controlUsuarioForm(forms.ModelForm):

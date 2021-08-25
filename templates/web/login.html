@@ -1,47 +1,88 @@
-{% extends 'web/index.html' %}
-{% block titulo%}Crear Titulo {% endblock titulo%}
-{% block cuerpo%}    
-    <section class="text-center d-flex justify-content-center">
+<!DOCTYPE html>
+<html lang="en">
 
-            <form class="form-signin" method="POST">
-            {% csrf_token %} 
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-6">
-                            <img src="/static/dashboard/images/login/gimnasio_6788.jpg" alt="" width="100%" height="auto">  
-                        </div>
+  <title>{% block titulo %}Power Gym{% endblock titulo%}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/img/favicon.png" rel="icon">
+  <link href="/static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/static/vendor/venobox/venobox.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Eterna - v2.2.1
+  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="bg-login"> 
+
+
+<section class="text-center d-flex justify-content-center ">
+
+        <form class="form-signin sub-bg-login" method="POST">
+        {% csrf_token %} 
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col">
+                        <img src="/static/img/login/usuario.png" alt="" width="128px" height="128px">  
                         
-                        <div class="col-6 pr-5 pl-5">
-                            <h1 class="h3 mb-3 font-weight-bold">¡Bienvenido!</h1> 
-                            <h6 class="h6 font-weight-bold">Ingresa tus datos</h6>
-                            
-                            <br>
+                        <h1>¡Bienvenido!</h1> 
+                        <h6 class="h6-login">Ingresa tus datos</h6>
+                        
+                        <br>
 
-                            {% if request.method == 'POST' %}
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>    
-                                    <strong>Error:</strong>Usuario o contraseña invalida
-                                </div>      
-                            {% endif %}
+                        {% if request.method == 'POST' %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>    
+                                <strong>Error:</strong>Usuario o contraseña invalida
+                            </div>      
+                        {% endif %}
 
+                        <div class="container-p-login">
                             <p for="inputEmail" class="text-left p-login">Usuario</p>            
-                                {{ form.username}}
-                                {{ form.username.error }}
+                            {{ form.username}}
+                            {{ form.username.error }}
                             <br>
-                            <p for="inputPassword" class="text-left p-login">Contraseña</p>
+                            <p for="inputPassword" class="text-left p-login s">Contraseña</p>
                                 {{ form.password}} 
                             
                             <br>
-                            <br>
-
-                            <button class="btn btn-lg btn-danger btn-block" type="submit">INICIAR SESIÓN</button>       
                         </div>
+                        
+                        <br>
+
+                        <button class="btn btn-primary" type="submit">INICIAR SESIÓN</button>       
                     </div>
-                    
                 </div>
-            </form>
-    </section>
-{%endblock cuerpo%}
+                
+            </div>
+        </form>
+</section>
+</body>
+
+</html>

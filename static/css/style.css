@@ -85,6 +85,11 @@ input:focus{
   border-radius: 5px !important;
   margin-top: 4rem;
 }
+.btn:hover {
+  background-color: #558bdb !important;
+  transform: scale(1.1);
+  transition: 450ms;
+}
 @media only screen and (max-width: 940px) {
   .sub-bg-login{
     margin: 2.5%;

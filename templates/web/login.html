@@ -42,6 +42,7 @@
 
         <form class="form-signin sub-bg-login" method="POST">
         {% csrf_token %} 
+        
 
             <div class="container">
                 <div class="row">
@@ -54,14 +55,7 @@
                         
                         <br>
 
-                        {% if request.method == 'POST' %}
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>    
-                                <strong>Error:</strong>Usuario o contraseña invalida
-                            </div>      
-                        {% endif %}
+
 
                         <div class="container-p-login">
                             <p for="inputEmail" class="text-left p-login">Usuario</p>            
@@ -76,13 +70,23 @@
                         
                         <br>
 
-                        <button class="btn btn-primary" type="submit">INICIAR SESIÓN</button>       
+                        <button class="btn btn-primary" type="submit">INICIAR SESIÓN</button>   
+                        
+                        {% if request.method == 'POST' %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>    
+                            <strong>Error:</strong>Usuario o contraseña invalida
+                        </div>      
+                    {% endif %}
                     </div>
                 </div>
                 
             </div>
         </form>
 </section>
+
 </body>
 
 </html>

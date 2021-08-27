@@ -76,6 +76,24 @@ class ActualizarSucursal(UpdateView):
     template_name = 'dashboard/crear_sucursal.html'
     success_url = reverse_lazy('listar_sucursales')
 
+class CrearEntrenador(CreateView):
+    model = Usuario
+    template_name = 'dashboard/crear_entrenador.html'
+    form_class = controlUsuarioForm
+    success_url = reverse_lazy('dashboard')
+
+class ListarEntrenador(ListView):    
+    model = Usuario
+    template_name="dashboard/listar_entrenador.html"
+    paginate_by = 10
+
+class ActualizarEntrenador(UpdateView):
+    model = Usuario
+    form_class = controlUsuarioForm
+    template_name = 'dashboard/actualizar_entrenador.html'    
+    success_url = reverse_lazy('dashboard') 
+    
+
 def valoracionMedica(request, id):
     usuario = Usuario.objects.get(numero_documento = id)
     try:

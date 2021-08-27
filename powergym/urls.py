@@ -18,7 +18,9 @@ from django.urls import path
 from django.contrib.auth.decorators import login_required
 from apps.controlUsuarios.views import inicio, CrearUsuario, \
                                 EditarUsuario,\
-                                CrearSucursal,ListarSucursal, ActualizarSucursal, valoracionMedica, \
+                                CrearSucursal,ListarSucursal, ActualizarSucursal,\
+                                CrearEntrenador, ListarEntrenador, ActualizarEntrenador,\
+                                valoracionMedica,\
                                 preciosView,Dashboard, Login, logout_usuario
 
 
@@ -36,6 +38,10 @@ urlpatterns = [
     path('dashboard/crearSucursal/', CrearSucursal.as_view(), name='crear_sucursal'),
     path('dashboard/listarSucursal/', ListarSucursal.as_view(), name='listar_sucursales'),
     path('dashboard/actualizarSucursal/<int:pk>/', ActualizarSucursal.as_view(), name='actualizar_sucursal'),
+
+    path('dashboard/crearEntrenador/', CrearEntrenador.as_view(), name='crear_entrenador'),
+    path('dashboard/listarEntrenador/', ListarEntrenador.as_view(), name='listar_entrenador'),
+    path('dashboard/actualizarEntrenador/<int:pk>/', ActualizarEntrenador.as_view(), name='actualizar_Entrenador'),
    
     path('valoracion_medica/<int:id>/', valoracionMedica, name='valoracion_medica'),
     path('precios/',preciosView, name='precios'),

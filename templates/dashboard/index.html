@@ -186,7 +186,7 @@
                       <td>{{cliente.ocupacion}}</td>
                       <td>{{cliente.sucursal}}</td>
                       <td>{% if cliente.estado %} activo {% else %}inactivo {% endif%}</td>
-                      <td ><a href="#"><i class="material-icons">local_hospital</i></a></td>  
+                      <td ><a href="{% url 'actualizar_valoracion_medica' cliente.pk %}"><i class="material-icons">local_hospital</i></a></td>  
                       <td ><a href="{% url 'actualizar_usuario' cliente.pk %}"><i class="material-icons">loop</i></a></td>
                     </tr>
                     {% endfor %}

@@ -3,6 +3,7 @@ from django.http import request
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls.base import reverse_lazy
+from django.urls import reverse
 from django.views.generic.edit import CreateView, FormView, UpdateView
 
 from django.utils.decorators import method_decorator
@@ -124,28 +125,63 @@ class ActualizarPlan(UpdateView):
     form_class = PlanForm
     success_url = reverse_lazy('listar_plan')
 
-def valoracionMedica(request, id):
-    usuario = Usuario.objects.get(numero_documento = id)
-    try:
-        valoracion = ValoracionMedica.objects.get(usuario=usuario)
-    except:
-        valoracion = None
-    if request.method == 'GET':            
-        form = valoracionMedicaForm(instance=valoracion)
-        contexto = {
-            'form':form
-        }
-    else:
-        form = valoracionMedicaForm(request.POST, instance=valoracion)
-        contexto = {
-            'form':form
-        }
-        #print(form)
-        if form.is_valid():
-            form.save()
-            return redirect('listar_clientes')
+class CrearvaloracionMedica(CreateView):
+    model = ValoracionMedica
+    template_name = 'dashboard/valoracion_medica.html'            
+    form_class = valoracionMedicaForm
+    success_url = reverse_lazy('dashboard')
 
-    return render(request,'web/valoracion_medica.html',contexto)
+    def get_initial(self):
+        id = self.kwargs['id']
+        usuario = Usuario.objects.get(pk = id)    
+        return {'usuario':usuario}
+
+class ActualizarvaloracionMedica(UpdateView):
+    model = ValoracionMedica
+    template_name = 'dashboard/valoracion_medica.html'
+    form_class = valoracionMedicaForm
+    success_url = reverse_lazy('dashboard')
+    
+    def dispatch(self, request, *args, **kwargs):
+        id = self.kwargs['id']
+        usuario = Usuario.objects.get(pk = id)        
+        try:
+            ValoracionMedica.objects.get(usuario=usuario)
+        except:
+            return redirect('crear_valoracion_medica', id = id)
+
+        self.get_object()
+
+        return super(ActualizarvaloracionMedica,self).get(request, *args, **kwargs)
+    
+    def get_object(self):        
+        self.object = self.request.pk
+        return self.object
+
+# def valoracionMedica(request, id):    
+#     usuario = Usuario.objects.get(pk = id)
+#     try:        
+#         valoracion = ValoracionMedica.objects.get(usuario=usuario)
+#     except:
+#         valoracion = None        
+#     if request.method == 'GET':            
+#         form = valoracionMedicaForm(instance=valoracion)
+#         form.usuario = usuario
+#         form.altura = "125"
+#         contexto = {
+#             'form':form
+#         }
+#     else:
+#         form = valoracionMedicaForm(request.POST, instance=valoracion)
+#         contexto = {
+#             'form':form
+#         }
+#         #print(form)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('listar_clientes')
+
+#     return render(request,'dashboard/valoracion_medica.html',contexto)
 
 def preciosView(request):
     return render(request, 'web/precios.html')

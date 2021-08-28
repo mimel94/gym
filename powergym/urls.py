@@ -41,7 +41,7 @@ urlpatterns = [
 
     path('dashboard/crearEntrenador/', CrearEntrenador.as_view(), name='crear_entrenador'),
     path('dashboard/listarEntrenador/', ListarEntrenador.as_view(), name='listar_entrenador'),
-    path('dashboard/actualizarEntrenador/<int:pk>/', ActualizarEntrenador.as_view(), name='actualizar_Entrenador'),
+    path('dashboard/actualizarEntrenador/<int:pk>/', ActualizarEntrenador.as_view(), name='actualizar_entrenador'),
 
     path('dashboard/listarPlan/', ListarPlan.as_view(), name='listar_plan'),
     path('dashboard/crearPlan/', CrearPlan.as_view(), name='crear_plan'),

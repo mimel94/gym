@@ -20,7 +20,7 @@ from apps.controlUsuarios.views import inicio, CrearUsuario, \
                                 EditarUsuario,\
                                 CrearSucursal,ListarSucursal, ActualizarSucursal,\
                                 CrearEntrenador, ListarEntrenador, ActualizarEntrenador,\
-                                valoracionMedica,\
+                                valoracionMedica,ListarPlan,CrearPlan,ActualizarPlan,\
                                 preciosView,Dashboard, Login, logout_usuario
 
 
@@ -42,6 +42,10 @@ urlpatterns = [
     path('dashboard/crearEntrenador/', CrearEntrenador.as_view(), name='crear_entrenador'),
     path('dashboard/listarEntrenador/', ListarEntrenador.as_view(), name='listar_entrenador'),
     path('dashboard/actualizarEntrenador/<int:pk>/', ActualizarEntrenador.as_view(), name='actualizar_Entrenador'),
+
+    path('dashboard/listarPlan/', ListarPlan.as_view(), name='listar_plan'),
+    path('dashboard/crearPlan/', CrearPlan.as_view(), name='crear_plan'),
+    path('dashboard/ActualizarPlan/<int:pk>/', ActualizarPlan.as_view(), name='actualizar_plan'),
    
     path('valoracion_medica/<int:id>/', valoracionMedica, name='valoracion_medica'),
     path('precios/',preciosView, name='precios'),

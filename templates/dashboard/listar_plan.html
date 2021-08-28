@@ -1,0 +1,35 @@
+{% extends 'dashboard/index.html' %}
+{% load humanize %}
+{% block titulo%}Listar Sucursales {% endblock titulo%}
+{% block cuerpo%}
+<section id="formulario">  
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr align="center">          
+            <th scope="col">Nombre</th>
+            <th scope="col">valor</th>                
+            <th scope="col">Actualizar</th>                      
+          </tr>
+        </thead>
+        <tbody>
+            
+          {% for sucursal in object_list %}
+          <tr align="center">          
+            <td>{{sucursal.nombre}}</td>
+            <td>${{sucursal.valor|intcomma}}</td>                     
+            <td ><a href="{% url 'actualizar_plan' sucursal.pk %}"><i class="material-icons">loop</i></a></td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+</section>
+
+
+
+
+
+
+{%endblock cuerpo%}

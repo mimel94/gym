@@ -12,8 +12,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login,logout
 from django.http import HttpResponseRedirect
 
-from .models import Sucursal, Usuario, ValoracionMedica
-from .forms import FormularioLogin, controlUsuarioForm, valoracionMedicaForm,SucursalForm
+from .models import Plan, Sucursal, Usuario, ValoracionMedica
+from .forms import FormularioLogin, PlanForm, controlUsuarioForm, valoracionMedicaForm,SucursalForm
 from django.views.generic import TemplateView, CreateView, ListView
 # Create your views here.
 
@@ -106,7 +106,23 @@ class ActualizarEntrenador(UpdateView):
     form_class = controlUsuarioForm
     template_name = 'dashboard/actualizar_entrenador.html'    
     success_url = reverse_lazy('dashboard') 
-    
+
+class ListarPlan(ListView):
+    model = Plan
+    template_name = 'dashboard/listar_plan.html'
+    paginate_by = 10
+
+class CrearPlan(CreateView):
+    model = Plan
+    template_name = 'dashboard/crear_plan.html'
+    form_class = PlanForm
+    success_url = reverse_lazy('listar_plan')
+
+class ActualizarPlan(UpdateView):
+    model = Plan
+    template_name = 'dashboard/crear_plan.html'
+    form_class = PlanForm
+    success_url = reverse_lazy('listar_plan')
 
 def valoracionMedica(request, id):
     usuario = Usuario.objects.get(numero_documento = id)

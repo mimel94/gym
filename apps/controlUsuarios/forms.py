@@ -15,9 +15,14 @@ class controlUsuarioForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(controlUsuarioForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs = {
-                'class': 'form-control'
-            }
+            if field == 'entrenador':
+                self.fields[field].widget.attrs = {
+                    'class': 'form-check'
+                }
+            else:    
+                self.fields[field].widget.attrs = {
+                    'class': 'form-control'
+                }
     
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput(
         attrs={
@@ -58,9 +63,14 @@ class SucursalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SucursalForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs = {
-                'class': 'form-control'
-            }
+            if field == 'estado':
+                self.fields[field].widget.attrs = {
+                    'class': 'form-check'
+                }
+            else:
+                self.fields[field].widget.attrs = {
+                    'class': 'form-control'
+                }
 
     class Meta:
         model = Sucursal

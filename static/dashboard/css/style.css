@@ -262,7 +262,7 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #BDBDC7;
+  color: #4B5563;
   text-align: left;
   background-color: rgba(88, 115, 254, 0.04); }
 
@@ -447,8 +447,13 @@ button::-moz-focus-inner,
 
 input[type="radio"],
 input[type="checkbox"] {
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  margin: 10px;
   box-sizing: border-box;
-  padding: 0; }
+}
 
 input[type="date"],
 input[type="time"],
@@ -1634,7 +1639,7 @@ pre {
   .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #b4a7ef;
+    border-color: #4A8ED9;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(89, 59, 219, 0.25); }
   .form-control::placeholder {
@@ -13542,7 +13547,7 @@ svg text {
 
 .form-control {
   background: #fff;
-  border: 1px solid #eaeaea;
+  border: 1px solid #454545;
   color: #454545; }
   .form-control:hover, .form-control:focus, .form-control.active {
     box-shadow: none;
@@ -13599,7 +13604,7 @@ input[type="checkbox"]:after {
   height: 1rem;
   margin-top: 0px;
   margin-left: -1px;
-  border: 1px solid transparent;
+  border: 1px solid black;
   border-radius: 3px;
   background: #d4d7da;
   line-height: 1.3; }

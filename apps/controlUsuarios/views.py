@@ -47,6 +47,10 @@ class Dashboard(ListView):
     template_name="dashboard/index.html"
     paginate_by = 10    
 
+    def get_queryset(self):
+        consulta = self.model.objects.filter(entrenador=False)
+        return consulta    
+
 class CrearUsuario(CreateView):
     model = Usuario
     template_name = 'dashboard/crear_clientes.html'
@@ -82,10 +86,20 @@ class CrearEntrenador(CreateView):
     form_class = controlUsuarioForm
     success_url = reverse_lazy('dashboard')
 
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.entrenador = True
+        obj.save()
+        return  redirect("listar_entrenador")
+
 class ListarEntrenador(ListView):    
     model = Usuario
-    template_name="dashboard/listar_entrenador.html"
-    paginate_by = 10
+    template_name="dashboard/listar_entrenadores.html"   
+    paginate_by = 10    
+
+    def get_queryset(self):
+        consulta = self.model.objects.filter(entrenador=True)
+        return consulta
 
 class ActualizarEntrenador(UpdateView):
     model = Usuario

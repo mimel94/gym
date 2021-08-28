@@ -1,0 +1,36 @@
+{% extends 'dashboard/index.html' %}
+{% block titulo%}Crear Usuario {% endblock titulo%}
+{% block cuerpo%}
+
+<section id="formulario">
+    <div class="container">
+      <table class="table table-striped">
+      <thead>
+        <tr align="center">          
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Edad</th>  
+          <th scope="col">Estado</th>
+          <th scope="col">Actualizar</th>                      
+        </tr>
+      </thead>
+      <tbody>
+          
+        {% for cliente in object_list %}
+        <tr align="center">          
+          <td>{{cliente.nombre}}</td>
+          <td>{{cliente.apellidos}}</td>
+          <td>{{cliente.edad}}</td>          
+          <td>{% if cliente.estado %} activo {% else %}inactivo {% endif%}</td>          
+          <td ><a href="{% url 'actualizar_usuario' cliente.pk %}"><i class="material-icons">loop</i></a></td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+    </div>
+</section>
+
+
+
+{%endblock cuerpo%}

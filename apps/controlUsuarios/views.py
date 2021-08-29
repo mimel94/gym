@@ -15,7 +15,7 @@ from django.http import HttpResponseRedirect
 
 from .models import Plan, Sucursal, Usuario, ValoracionMedica
 from .forms import FormularioLogin, PlanForm, controlUsuarioForm, valoracionMedicaForm,SucursalForm
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView,DetailView
 # Create your views here.
 
 class Login(FormView):
@@ -136,11 +136,11 @@ class CrearvaloracionMedica(CreateView):
         usuario = Usuario.objects.get(pk = id)    
         return {'usuario':usuario}
 
-class ActualizarvaloracionMedica(UpdateView):
+class DetallevaloracionMedica(DetailView):
     model = ValoracionMedica
-    template_name = 'dashboard/valoracion_medica.html'
-    form_class = valoracionMedicaForm
-    success_url = reverse_lazy('dashboard')
+    template_name = 'dashboard/detalle_valoracion_medica.html'
+    # form_class = valoracionMedicaForm
+    # success_url = reverse_lazy('dashboard')
     
     def dispatch(self, request, *args, **kwargs):
         id = self.kwargs['id']
@@ -152,10 +152,13 @@ class ActualizarvaloracionMedica(UpdateView):
 
         self.get_object()
 
-        return super(ActualizarvaloracionMedica,self).get(request, *args, **kwargs)
+        return super(DetallevaloracionMedica,self).get(request, *args, **kwargs)
     
-    def get_object(self):        
-        self.object = self.request.pk
+    def get_object(self):
+        try:
+            self.object = self.kwargs['id']
+        except:
+            pass
         return self.object
 
 # def valoracionMedica(request, id):    

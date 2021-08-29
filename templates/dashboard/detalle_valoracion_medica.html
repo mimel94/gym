@@ -2,36 +2,36 @@
 {% block titulo%}Crear Titulo {% endblock titulo%}
 {% block cuerpo%}
 <section id="formulario">
+    {{object}}
     <div class="container">
         <form  method="post" >
             {% csrf_token %}
             <div class="form-group">              
               {{form.usuario.label}}
-              {{form.usuario}}
+              {{object.usuario}}
             </div>
             <div class="form-group">              
                 {{form.altura.label}}
-                {{form.altura}}
+                {{object.altura}}
               </div>
             <div class="form-group">                
                 {{form.peso.label}}                
-                {{form.peso}}
+                {{object.peso}}
             </div>
               <div class="form-group">                
                 {{form.enfermedad.label}}
-                {{form.enfermedad}}
+                {{object.enfermedad}}
                 
               </div>
               <div class="form-group">                
                 {{form.alergia.label}}
-                {{form.alergia}}
+                {{object.alergia}}
               </div>
               <div class="form-group">                
                 {{form.operaciones.label}}
-                {{form.operaciones}}
-              </div>              
-              {{form.errors}}
-            <button type="submit" class="btn btn-primary">Guardar</button>
+                {{object.operaciones}}
+              </div>                            
+            <button type="submit" class="btn btn-primary">Actualizar</button>
           </form>
 
     </div>

@@ -49,22 +49,23 @@
                 {{form.sucursal.label}}
                 {{form.sucursal}}
               </div>
+              <div class="form-group col">                
+                {{form.meses.label}}
+                {{form.meses}}
+              </div>
             </div>  
             <div class="row">
               <div class="form-group col">                
                 {{form.ocupacion.label}}
                 {{form.ocupacion}}
-              </div>
-              <div class="form-group col">                
-                {{form.entrenador.label}}
-                {{form.entrenador}}
-              </div>
+              </div>              
             </div>       
+            {{form.errors}}
               
             
               
               
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
 
     </div>

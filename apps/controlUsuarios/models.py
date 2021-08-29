@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.db.models.fields.related import ForeignKey
 
 # Create your models here.
 class Plan(models.Model):
@@ -66,6 +67,7 @@ class Usuario(AbstractBaseUser):
     entrenador = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
     estado = models.BooleanField("estado", default= True)
+    meses = models.IntegerField("Meses a pagar",null=True,blank=True)
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'username'

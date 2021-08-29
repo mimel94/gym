@@ -41,7 +41,7 @@ class controlUsuarioForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ('username','email','tipo_documento','numero_documento','nombre','apellidos','edad','plan','ocupacion','sucursal','entrenador')
+        fields = ('username','email','tipo_documento','numero_documento','nombre','apellidos','edad','plan','ocupacion','sucursal','entrenador','meses')
     
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
@@ -90,11 +90,12 @@ class PlanForm(forms.ModelForm):
 
 class valoracionMedicaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(valoracionMedicaForm, self).__init__(*args, **kwargs)
+        super(valoracionMedicaForm, self).__init__(*args, **kwargs)        
         for field in self.fields:
             self.fields[field].widget.attrs = {
                 'class': 'form-control'
             }
+        # self.fields['usuario'].widget.attrs['disabled']='disabled'
 
     class Meta:
         model = ValoracionMedica

@@ -10,6 +10,7 @@ class Plan(models.Model):
     
     nombre = models.CharField( max_length=50 )
     valor = models.IntegerField()
+    estado = models.BooleanField(default=True)   
 
 class Sucursal(models.Model):
     def __str__(self):

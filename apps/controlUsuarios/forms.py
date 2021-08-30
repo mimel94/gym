@@ -80,9 +80,14 @@ class PlanForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PlanForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs = {
-                'class': 'form-control'
-            }
+            if field == 'estado':
+                self.fields[field].widget.attrs = {
+                    'class': 'form-check'
+                }
+            else:
+                self.fields[field].widget.attrs = {
+                    'class': 'form-control'
+                }
 
     class Meta:
         model = Plan

@@ -2,7 +2,7 @@
 {% block titulo%}Crear Planes {% endblock titulo%}
 {% block cuerpo%}
 <section id="formulario">
-    <div class="container">
+    <div class="container p-5">
         <form  method="post" >
             {% csrf_token %}
             <div class="row">
@@ -13,8 +13,14 @@
               <div class="form-group col">              
                   {{form.valor.label}}
                   {{form.valor}}
-              </div>
+              </div>              
             </div>
+            <div class="row">                          
+              <div class="form-group col">              
+                  {{form.estado.label}}
+                  {{form.estado}}
+              </div>
+            </div>       
                          
               
             <button type="submit" class="btn btn-primary">Guardar</button>

@@ -286,6 +286,11 @@ p {
   margin-top: 0;
   margin-bottom: 1rem; }
 
+.form-control:focus {
+  border: 2px solid #361B4E !important;
+}
+
+
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
@@ -346,7 +351,7 @@ a {
   text-decoration: none;
   background-color: transparent; }
   a:hover {
-    color: #391faa;
+    color: #361B4E;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -1349,11 +1354,11 @@ pre {
     margin-left: 91.66667%; } }
 
 .table {
-  border: 1.2px solid #BDBDC7;
-  border-radius: 5px !important;
   width: 100%;
   margin-bottom: 1rem;
-  color: #BDBDC7; }
+  color: #BDBDC7;
+  box-shadow: 2px 3px 6px 1px #9D9D9D !important;
+}
   .table th,
   .table td {
     padding: 0.75rem;
@@ -1370,6 +1375,7 @@ pre {
   padding: 0.3rem; }
 
 .table-bordered {
+  
   border: 1px solid #EEEEEE; }
   .table-bordered th,
   .table-bordered td {
@@ -1639,7 +1645,7 @@ pre {
   .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #4A8ED9;
+    border-color: #361B4E;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(89, 59, 219, 0.25); }
   .form-control::placeholder {

@@ -140,16 +140,7 @@ class CrearvaloracionMedica(CreateView):
         id_user = self.kwargs['id']
         print("ID USUARIO",id_user)
         form.instance.usuario = Usuario.objects.get(pk=id_user)
-        
-        return super().form_valid(form)
-        
-    #     return super().form_valid(form)
-
-    # def get(self, request, *args, **kwargs) :
-    #     id_user = self.kwargs['id']
-    #     Usuario.objects.get(id=id_user)
-    #     valoracion = self.model(usuario=)
-    #     return super().get(request, *args, **kwargs)
+        return super().form_valid(form)          
 
 class DetallevaloracionMedica(DetailView):
     model = ValoracionMedica

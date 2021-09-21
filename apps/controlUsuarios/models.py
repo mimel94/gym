@@ -3,6 +3,30 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
 from django.db.models.fields.related import ForeignKey
 
 # Create your models here.
+
+class Ejercicios(models.Model):
+    nombre = models.CharField("Ejercicio",max_length=254)
+    duracion = models.CharField("Duracion",max_length=254)
+    series = models.CharField("Series",max_length=254)
+    repeticiones = models.CharField("Repeticiones por serie",max_length=254)
+    descanso = models.CharField("Descanso",max_length=254)
+
+    def __str__(self) :
+        return f'{self.nombre}'
+
+class Rutina(models.Model):
+    nombre = models.CharField("Rutina",max_length=254)
+    lunes = models.ManyToManyField( Ejercicios,related_name='lunes')
+    Martes = models.ManyToManyField( Ejercicios,related_name='martes')
+    Miercoles = models.ManyToManyField( Ejercicios,related_name='miercoles')
+    Jueves = models.ManyToManyField( Ejercicios, related_name='jueves')
+    Viernes = models.ManyToManyField( Ejercicios, related_name='viernes')
+    Sabado = models.ManyToManyField( Ejercicios, related_name='sabado')
+    Domingo = models.ManyToManyField( Ejercicios,blank=True,related_name='domingo')
+
+    def __str__(self) :
+        return f'{self.nombre}'
+
 class Plan(models.Model):
 
     def __str__(self):
@@ -69,6 +93,7 @@ class Usuario(AbstractBaseUser):
     admin = models.BooleanField(default=False)
     estado = models.BooleanField("estado", default= True)
     meses = models.IntegerField("Meses a pagar",null=True,blank=True)
+    rutina = models.ForeignKey(Rutina,on_delete=models.CASCADE,blank=True,null=True)
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'username'
@@ -94,3 +119,6 @@ class ValoracionMedica(models.Model):
     enfermedad = models.CharField(max_length=150)
     alergia = models.CharField(max_length=150)
     operaciones = models.CharField( max_length=150)
+
+
+    

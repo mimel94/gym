@@ -22,9 +22,8 @@ from apps.controlUsuarios.views import inicio, CrearUsuario, \
                                 CrearEntrenador, ListarEntrenador, ActualizarEntrenador,\
                                 CrearvaloracionMedica,DetallevaloracionMedica, ActualizarValoracionMedica, \
                                 ListarPlan,CrearPlan,ActualizarPlan,\
-                                preciosView,Dashboard, Login, logout_usuario
-
-
+                                CrearEjercicio, ActualizarEjercicio, ListarEjercicios,\
+                                CrearRutina, EditarRutina, ListarRutinas, preciosView,Dashboard, Login, logout_usuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -53,6 +52,16 @@ urlpatterns = [
     path('dashboard/CrearValoracionMedica/<int:id>/', login_required(CrearvaloracionMedica.as_view()), name='crear_valoracion_medica'),
     path('dashboard/DetalleValoracionMedica/<int:id>/',login_required( DetallevaloracionMedica.as_view()), name='detalle_valoracion_medica'),
     path('dashboard/ActualizarValoracionMedica/<int:pk>/',login_required( ActualizarValoracionMedica.as_view()), name='actualizar_valoracion_medica'),
+
+    path('dashboard/CrearEjercicio/',CrearEjercicio.as_view(),name='crear_ejercicio'),
+    path('dashboard/ActualizarEjercicio/<int:pk>/',ActualizarEjercicio.as_view(),name='actualizar_ejercicio'),
+    path('dashboard/listarEjercicios/',ListarEjercicios.as_view(),name='listar_ejercicios'),
+
+    path('dashboard/CrearRutinas/',CrearRutina.as_view(),name='crear_rutina'),
+    path('dashboard/ActualizarRutinas/<int:pk>/',EditarRutina.as_view(),name='actualizar_rutina'),
+    path('dashboard/listarRutinas/',ListarRutinas.as_view(),name='listar_rutinas'),
+
+
     
     path('precios/',preciosView, name='precios'),
   

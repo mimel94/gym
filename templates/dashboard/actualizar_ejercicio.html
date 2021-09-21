@@ -1,0 +1,44 @@
+{% extends 'dashboard/index.html' %}
+{% block titulo%}Actualizar Ejercicios {% endblock titulo%}
+{% block cuerpo%}
+<section id="formulario">
+    <div class="container p-5">
+        <form  method="post" >
+            {% csrf_token %}
+            <div class="row">
+              <div class="form-group col">              
+                {{form.nombre.label}}
+                {{form.nombre}}
+              </div>
+              <div class="form-group col">              
+                  {{form.duracion.label}}
+                  {{form.duracion}}
+              </div>              
+            </div>
+            <div class="row">                          
+              <div class="form-group col">              
+                  {{form.series.label}}
+                  {{form.series}}
+              </div>
+              <div class="form-group col">              
+                {{form.repeticiones.label}}
+                {{form.repeticiones}}
+            </div>
+            <div class="form-group col">              
+                {{form.descanso.label}}
+                {{form.descanso}}
+            </div>
+            </div>       
+                         
+              
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+          </form>
+
+    </div>
+
+</section>
+
+
+
+
+{%endblock cuerpo%}

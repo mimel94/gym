@@ -1,0 +1,41 @@
+{% extends 'dashboard/index.html' %}
+{% load humanize %}
+{% block titulo%}Listar Sucursales {% endblock titulo%}
+{% block cuerpo%}
+<section id="formulario">  
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr align="center">          
+            <th scope="col">Nombre</th>
+            <th scope="col">Duracion</th>  
+            <th scope="col">Series</th>               
+            <th scope="col">repeticiones</th>                      
+            <th scope="col">Descanso</th>   
+            <th scope="col">Actualizar</th>                      
+          </tr>
+        </thead>
+        <tbody>
+            
+          {% for ejercicio in object_list %}
+          <tr align="center">          
+            <td>{{ejercicio.nombre}}</td>
+            <td>{{ejercicio.duracion}}</td>
+            <td>{{ejercicio.series}}</td>
+            <td>{{ejercicio.repeticiones}}</td>
+            <td>{{ejercicio.descanso}}</td>
+            <td ><a href="{% url 'actualizar_ejercicio' ejercicio.pk %}"><i class="material-icons">loop</i></a></td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+</section>
+
+
+
+
+
+
+{%endblock cuerpo%}

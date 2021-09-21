@@ -13,8 +13,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login,logout
 from django.http import HttpResponseRedirect
 
-from .models import Plan, Sucursal, Usuario, ValoracionMedica
-from .forms import FormularioLogin, PlanForm, controlUsuarioForm, valoracionMedicaForm,SucursalForm
+from .models import Ejercicios, Plan, Rutina, Sucursal, Usuario, ValoracionMedica
+from .forms import FormularioLogin, PlanForm, controlUsuarioForm, valoracionMedicaForm,SucursalForm, RutinaForm, EjerciciosForm
 from django.views.generic import TemplateView, CreateView, ListView,DetailView
 # Create your views here.
 
@@ -203,7 +203,39 @@ class EditarUsuarioPropio(UpdateView):
 def preciosView(request):
     return render(request, 'web/precios.html')
 
+class CrearRutina(CreateView):
+    model = Rutina
+    template_name = 'dashboard/crear_rutina.html'
+    form_class = RutinaForm
+    success_url = reverse_lazy('listar_rutinas')
 
+class EditarRutina(UpdateView):
+    model = Rutina
+    form_class = RutinaForm
+    template_name = 'dashboard/actualizar_rutina.html'
+    success_url = reverse_lazy('listar_rutinas')
+
+class ListarRutinas(ListView):
+    model = Rutina
+    template_name = 'dashboard/listar_rutina.html'
+    paginate_by = 50
+
+class CrearEjercicio(CreateView):
+    model = Ejercicios
+    form_class = EjerciciosForm
+    template_name = 'dashboard/crear_ejercicio.html'
+    success_url = reverse_lazy('listar_ejercicios')
+
+class ActualizarEjercicio(UpdateView):
+    model = Ejercicios
+    form_class = EjerciciosForm
+    template_name = 'dashboard/actualizar_ejercicio.html'
+    success_url = reverse_lazy('listar_ejercicios')
+
+class ListarEjercicios(ListView):
+    model = Ejercicios
+    template_name ='dashboard/listar_ejercicio.html'
+    paginate_by = 50
 
 
 

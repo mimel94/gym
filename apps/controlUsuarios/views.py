@@ -174,31 +174,31 @@ class ActualizarValoracionMedica(UpdateView):
     form_class = valoracionMedicaForm
     success_url = reverse_lazy('dashboard')
 
+class VerPerfilUsuario(TemplateView):
+    model = Usuario
+    template_name = 'dashboard/ver_perfil.html'
 
-# def valoracionMedica(request, id):    
-#     usuario = Usuario.objects.get(pk = id)
-#     try:        
-#         valoracion = ValoracionMedica.objects.get(usuario=usuario)
-#     except:
-#         valoracion = None        
-#     if request.method == 'GET':            
-#         form = valoracionMedicaForm(instance=valoracion)
-#         form.usuario = usuario
-#         form.altura = "125"
-#         contexto = {
-#             'form':form
-#         }
-#     else:
-#         form = valoracionMedicaForm(request.POST, instance=valoracion)
-#         contexto = {
-#             'form':form
-#         }
-#         #print(form)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('listar_clientes')
+class EditarUsuarioPropio(UpdateView):
+    model = Usuario
+    form_class = controlUsuarioForm
+    template_name = 'dashboard/actualizar_perfil.html'    
+    success_url = reverse_lazy('dashboard')
 
-#     return render(request,'dashboard/valoracion_medica.html',contexto)
+    def dispatch(self, request, *args, **kwargs):
+        id = self.kwargs['pk']
+        if id == request.user.id:
+            self.get_object()
+        else:      
+            return redirect('mi_perfil')
+
+        self.get_object()
+        return super(EditarUsuarioPropio,self).get(request, *args, **kwargs)
+    
+    def get_object(self,queryset=None):        
+        object = getattr(self, 'object', None)
+        if object is None:
+            object = super().get_object(queryset)   
+        return object
 
 def preciosView(request):
     return render(request, 'web/precios.html')

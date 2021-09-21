@@ -1,0 +1,48 @@
+{% extends 'dashboard/index.html' %}
+{% load humanize %}
+{% block titulo%}Listar Sucursales {% endblock titulo%}
+{% block cuerpo%}
+<section id="formulario">  
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr align="center">          
+            <th scope="col">Nombre</th>
+            <th scope="col">Lunes</th>  
+            <th scope="col">Martes</th>               
+            <th scope="col">Miercoles</th>                      
+            <th scope="col">Jueves</th>   
+            <th scope="col">Viernes</th>               
+            <th scope="col">Sabado</th>   
+            <th scope="col">Domingo</th>   
+            <th scope="col">Actualizar</th>                      
+          </tr>
+        </thead>
+        <tbody>
+            
+          {% for ejercicio in object_list%}     
+
+          <tr align="center">          
+            <td>{{ejercicio.nombre}}</td>            
+            <td>{% for i in ejercicio.lunes.all %}-{{i}}<br>{% endfor %}</td>
+            <td>{% for i in ejercicio.Martes.all %}-{{i}}<br>{% endfor %}</td>
+            <td>{% for i in ejercicio.Miercoles.all %}-{{i}}<br>{% endfor %}</td>
+            <td>{% for i in ejercicio.Jueves.all %}-{{i}}<br>{% endfor %}</td>
+            <td>{% for i in ejercicio.Viernes.all %}-{{i}}<br>{% endfor %}</td>
+            <td>{% for i in ejercicio.Sabado.all %}-{{i}}<br>{% endfor %}</td>
+            <td>{% for i in ejercicio.Domingo.all %}-{{i}}<br>{% endfor %}</td>            
+            <td ><a href="{% url 'actualizar_rutina' ejercicio.pk %}"><i class="material-icons">loop</i></a></td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+</section>
+
+
+
+
+
+
+{%endblock cuerpo%}

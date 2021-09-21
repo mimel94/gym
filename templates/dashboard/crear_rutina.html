@@ -1,0 +1,61 @@
+{% extends 'dashboard/index.html' %}
+{% block titulo%}Crear Planes {% endblock titulo%}
+{% block cuerpo%}
+<section id="formulario">
+    <div class="container p-5">
+        <form  method="post" >
+            {% csrf_token %}
+            <div class="row">
+              <div class="form-group col-3">              
+                {{form.nombre.label}}
+                {{form.nombre}}
+              </div>                     
+            </div>
+            <div class="row">  
+                <div class="form-group col">              
+                    {{form.lunes.label}}
+                    {{form.lunes}}
+                </div>                               
+              <div class="form-group col">              
+                  {{form.Martes.label}}
+                  {{form.Martes}}
+              </div>
+              <div class="form-group col">              
+                {{form.Miercoles.label}}
+                {{form.Miercoles}}
+            </div>
+            <div class="form-group col">              
+                {{form.Jueves.label}}
+                {{form.Jueves}}
+            </div>
+            
+            </div>
+            <div class="row">
+                <div class="form-group col">              
+                    {{form.Viernes.label}}
+                    {{form.Viernes}}
+                </div>
+                <div class="form-group col">              
+                    {{form.Sabado.label}}
+                    {{form.Sabado}}
+                </div>
+                <div class="form-group col">              
+                    {{form.Domingo.label}}
+                    {{form.Domingo}}
+                </div>
+                
+            </div>
+        
+                         
+              
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+
+    </div>
+
+</section>
+
+
+
+
+{%endblock cuerpo%}

@@ -88,7 +88,7 @@ class Usuario(AbstractBaseUser):
         return self.admin
  
 class ValoracionMedica(models.Model):  
-    usuario = models.OneToOneField(Usuario, primary_key = True, on_delete=models.CASCADE)    
+    usuario = models.OneToOneField(Usuario, primary_key = True, on_delete=models.CASCADE,blank=True)    
     altura = models.CharField( max_length=50)
     peso = models.CharField(max_length=50)
     enfermedad = models.CharField(max_length=150)

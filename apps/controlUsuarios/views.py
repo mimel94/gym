@@ -135,11 +135,13 @@ class CrearvaloracionMedica(CreateView):
         id = self.kwargs['id']
         usuario = Usuario.objects.get(pk = id)    
         return {'usuario':usuario}
-    
-    # def form_valid(self, form):
-    #     id_user = self.kwargs['id']
-    #     user_object = Usuario.objects.get(id=id_user)
-    #     form.instance.usuario = user_object
+
+    def form_valid(self, form):
+        id_user = self.kwargs['id']
+        print("ID USUARIO",id_user)
+        form.instance.usuario = Usuario.objects.get(pk=id_user)
+        
+        return super().form_valid(form)
         
     #     return super().form_valid(form)
 

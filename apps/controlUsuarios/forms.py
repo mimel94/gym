@@ -97,9 +97,15 @@ class valoracionMedicaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(valoracionMedicaForm, self).__init__(*args, **kwargs)        
         for field in self.fields:
-            self.fields[field].widget.attrs = {
-                'class': 'form-control'
-            }
+            if field == 'usuario':
+                self.fields[field].widget.attrs = {
+                    'disabled': 'disabled',
+                    'class': 'form-control'
+                }
+            else:
+                self.fields[field].widget.attrs = {
+                    'class': 'form-control'
+                }
         # self.fields['usuario'].widget.attrs['disabled']='disabled'
 
     class Meta:

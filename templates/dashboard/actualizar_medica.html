@@ -1,36 +1,38 @@
 {% extends 'dashboard/index.html' %}
 {% block titulo%}Crear Titulo {% endblock titulo%}
 {% block cuerpo%}
-<section id="formulario">    
+<h1>Actualizar Valoracion medica</h1>
+<section id="formulario">
     <div class="container">
         <form  method="post" >
             {% csrf_token %}
             <div class="form-group">              
               {{form.usuario.label}}
-              {{object.usuario}}
+              {{form.usuario}}
             </div>
             <div class="form-group">              
                 {{form.altura.label}}
-                {{object.altura}}
+                {{form.altura}}
               </div>
             <div class="form-group">                
                 {{form.peso.label}}                
-                {{object.peso}}
+                {{form.peso}}
             </div>
               <div class="form-group">                
                 {{form.enfermedad.label}}
-                {{object.enfermedad}}
+                {{form.enfermedad}}
                 
               </div>
               <div class="form-group">                
                 {{form.alergia.label}}
-                {{object.alergia}}
+                {{form.alergia}}
               </div>
               <div class="form-group">                
                 {{form.operaciones.label}}
-                {{object.operaciones}}
-              </div>       
-            <a class="btn btn-primary" href="{% url 'actualizar_valoracion_medica'  object.pk %}">Actualizar</a>                                 
+                {{form.operaciones}}
+              </div>              
+              {{form.errors}}
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
 
     </div>

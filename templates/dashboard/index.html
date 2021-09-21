@@ -113,9 +113,7 @@
                            <li><a href="{% url 'listar_sucursales'%}">Listar Sedes</a></li>
                            <li><a href="{% url 'crear_sucursal' %}">Crear Sedes</a></li>
                        </ul>
-                   </li>
-                   {% endif %}
-                   {% if user.admin %}
+                   </li>                  
                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="material-icons">fitness_center</i><span class="nav-text">Entrenadores</span></a>
                         <ul aria-expanded="false">
@@ -123,8 +121,7 @@
                             <li><a href="{% url 'crear_entrenador' %}">Crear Entrenadores</a></li>
                         </ul>
                     </li>
-                    {% endif %}
-                    {% if user.admin %}
+                    
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="material-icons">people</i><span class="nav-text">Usuarios</span></a>
                         <ul aria-expanded="false">
@@ -132,8 +129,7 @@
                             <li><a href="{% url 'crear_usuario'%}">Crear Usuarios</a></li>
                         </ul>
                     </li>
-                    {% endif %}
-                    {% if user.admin %}
+                   
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="material-icons">assignment</i><span class="nav-text">Planes</span></a>
                             <ul aria-expanded="false">
@@ -142,6 +138,15 @@
                             </ul>
                         </li>
                    
+                    {% endif %}
+                    {% if user.entrenador %}
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="material-icons">assignment</i><span class="nav-text">Planes</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="{% url 'listar_plan'%}">Listar Planes</a></li>
+                                <li><a href="{% url 'crear_plan'%}">Crear Planes</a></li>
+                            </ul>
+                        </li>
                     {% endif %}
                 </ul>
             </div>

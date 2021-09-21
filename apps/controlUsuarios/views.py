@@ -135,6 +135,19 @@ class CrearvaloracionMedica(CreateView):
         id = self.kwargs['id']
         usuario = Usuario.objects.get(pk = id)    
         return {'usuario':usuario}
+    
+    # def form_valid(self, form):
+    #     id_user = self.kwargs['id']
+    #     user_object = Usuario.objects.get(id=id_user)
+    #     form.instance.usuario = user_object
+        
+    #     return super().form_valid(form)
+
+    # def get(self, request, *args, **kwargs) :
+    #     id_user = self.kwargs['id']
+    #     Usuario.objects.get(id=id_user)
+    #     valoracion = self.model(usuario=)
+    #     return super().get(request, *args, **kwargs)
 
 class DetallevaloracionMedica(DetailView):
     model = ValoracionMedica
@@ -156,10 +169,18 @@ class DetallevaloracionMedica(DetailView):
     
     def get_object(self):
         try:
-            self.object = self.kwargs['id']
+            # self.object = self.kwargs['id']
+            self.object = self.model.objects.get(usuario__id=self.kwargs['id'])
         except:
             pass
         return self.object
+
+class ActualizarValoracionMedica(UpdateView):
+    model = ValoracionMedica
+    template_name = 'dashboard/actualizar_medica.html'            
+    form_class = valoracionMedicaForm
+    success_url = reverse_lazy('dashboard')
+
 
 # def valoracionMedica(request, id):    
 #     usuario = Usuario.objects.get(pk = id)

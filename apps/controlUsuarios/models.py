@@ -94,6 +94,7 @@ class Usuario(AbstractBaseUser):
     estado = models.BooleanField("estado", default= True)
     meses = models.IntegerField("Meses a pagar",null=True,blank=True)
     rutina = models.ForeignKey(Rutina,on_delete=models.CASCADE,blank=True,null=True)
+    foto =  models.ImageField("Foto",upload_to="sitios", null=True)
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'username'

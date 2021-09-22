@@ -43,7 +43,7 @@ class controlUsuarioForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ('username','email','tipo_documento','numero_documento','nombre','apellidos','edad','plan','ocupacion','sucursal','entrenador','meses')
+        fields = ('username','email','tipo_documento','numero_documento','nombre','apellidos','edad','plan','ocupacion','sucursal','entrenador','meses','foto')
         
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')

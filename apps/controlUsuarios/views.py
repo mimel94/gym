@@ -174,6 +174,12 @@ class ActualizarValoracionMedica(UpdateView):
     form_class = valoracionMedicaForm
     success_url = reverse_lazy('dashboard')
 
+    def form_valid(self, form):
+        id_user = self.kwargs['pk']
+        print("ID USUARIO",id_user)
+        form.instance.usuario = Usuario.objects.get(pk=id_user)
+        return super().form_valid(form)          
+
 class VerPerfilUsuario(TemplateView):
     model = Usuario
     template_name = 'dashboard/ver_perfil.html'

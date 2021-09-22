@@ -25,7 +25,7 @@ from apps.controlUsuarios.views import inicio, CrearUsuario, \
                                 CrearvaloracionMedica,DetallevaloracionMedica, ActualizarValoracionMedica, \
                                 ListarPlan,CrearPlan,ActualizarPlan,\
                                 CrearEjercicio, ActualizarEjercicio, ListarEjercicios,\
-                                CrearRutina, EditarRutina, ListarRutinas, preciosView,Dashboard, Login, logout_usuario
+                                CrearRutina, EditarRutina, ListarRutinas, RutinaUsuario, preciosView,Dashboard, Login, logout_usuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -63,6 +63,7 @@ urlpatterns = [
     path('dashboard/ActualizarRutinas/<int:pk>/',EditarRutina.as_view(),name='actualizar_rutina'),
     path('dashboard/listarRutinas/',ListarRutinas.as_view(),name='listar_rutinas'),
 
+    path('dashboard/añadirRutina/<int:pk>/',RutinaUsuario.as_view(),name='rutina_usuario'),
 
     
     path('precios/',preciosView, name='precios'),

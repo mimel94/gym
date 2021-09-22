@@ -163,6 +163,27 @@
                                 <li><a href="{% url 'crear_plan'%}">Crear Planes</a></li>
                             </ul>
                         </li>
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="material-icons">directions_walk</i><span class="nav-text">Ejercicios</span></a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{% url 'listar_ejercicios'%}">Listar Ejercicios</a></li>
+                                    <li><a href="{% url 'crear_ejercicio'%}">Crear Ejercicios</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="material-icons">accessibility</i><span class="nav-text">Rutinas</span></a>
+                                    <ul aria-expanded="false">
+                                        <li><a href="{% url 'crear_rutina'%}">Listar Rutinas</a></li>
+                                        <li><a href="{% url 'listar_rutinas'%}">Crear Rutinas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="material-icons">people</i><span class="nav-text">Usuarios</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="{% url 'dashboard'%}">Listar Usuarios</a></li>                                
+                            </ul>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
@@ -219,9 +240,58 @@
                 </table>
                 </div>
             </section>
-            {% else %}
+            {% endif %}
+            {% if user.entrenador %}
 
             <h1>Entrenador</h1>
+            <section id="formulario">
+                <div class="container p-5">
+                  <table class="table table-striped">
+                  <thead>
+                    <tr align="center">          
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellidos</th>
+                      <th scope="col">Edad</th>
+                      <th scope="col">Plan</th>
+                      <th scope="col">Meses</th>
+                      <th scope="col">Total a pagar</th>
+                      <th scope="col">Ocupacion</th>
+                      <th scope="col">Sucursal</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col" >Valoracion Medica</th>                                    
+                      <th scope="col" >añadir rutina</th>                                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                      
+                    {% for cliente in object_list %}
+                    <tr align="center">          
+                      <td>{{cliente.nombre}}</td>
+                      <td>{{cliente.apellidos}}</td>
+                      <td>{{cliente.edad}}</td>
+                      <td>{{cliente.plan}}</td>
+                      <td>{{cliente.meses}}</td>
+                      <td>{% multiply cliente.plan.valor cliente.meses %}</td>
+                      <td>{{cliente.ocupacion}}</td>
+                      <td>{{cliente.sucursal}}</td>
+                      <td>{% if cliente.estado %} activo {% else %}inactivo {% endif%}</td>
+                      <td ><a href="{% url 'detalle_valoracion_medica' cliente.pk %}"><i class="material-icons">local_hospital</i></a></td>                        
+                      <td ><a href="{% url 'rutina_usuario' cliente.pk %}"><i class="material-icons">local_hospital</i></a></td>                        
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+                </div>
+            </section>
+            {% else %}
+                <script>                  
+                    var admin = '{{user.admin}}'      
+                    var entrenador = '{{user.entrenador}}';
+                    if(admin == 'False' && entrenador == 'False' ){
+                        window.location.replace('/dashboard/verMiPerfil/');                     
+                    }
+                </script>
             {% endif %}
             {% endblock cuerpo%}
         </div>

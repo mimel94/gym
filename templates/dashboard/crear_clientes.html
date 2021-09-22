@@ -3,7 +3,7 @@
 {% block cuerpo%}
 <section id="formulario">
     <div class="container p-5">
-        <form  method="post" >
+        <form  method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
               <div class="form-group col">              
@@ -69,6 +69,12 @@
             </div>
             
             </div>
+            <div class="row">
+              <div class="form-group col-3">                
+                {{form.foto.label}}
+                {{form.foto}}
+              </div>
+            </div>    
             
             {{ form.non_field_errors }}
             {{ form.ocupacion.errors }}

@@ -237,5 +237,27 @@ class ListarEjercicios(ListView):
     template_name ='dashboard/listar_ejercicio.html'
     paginate_by = 50
 
+class RutinaUsuario(TemplateView):    
+    template_name = 'dashboard/rutina_usuario.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(RutinaUsuario, self).get_context_data(**kwargs)   
+        pk_user = kwargs["pk"]
+        usuario = Usuario.objects.get(pk=pk_user)
+        context["usuario"] = usuario
+        rutinas = Rutina.objects.all()
+        context["rutinas"] = rutinas        
+        return context
+
+    def post(self, request, *args, **kwargs):
+        pk_usuario = request.POST.get("pk_usuario")
+        pk_rutina = request.POST.get("pk_rutina")
+        print(pk_rutina)
+
+        usuario = Usuario.objects.get(pk=pk_usuario)
+        rutina_usuario = Rutina.objects.get(pk=pk_rutina)
+        usuario.rutina = rutina_usuario
+        usuario.save()
+        return HttpResponseRedirect(reverse('dashboard'))
 
 

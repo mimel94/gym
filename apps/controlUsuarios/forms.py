@@ -28,6 +28,7 @@ class controlUsuarioForm(forms.ModelForm):
         attrs={
            'class': 'form-control',
            'placeholder':'Ingrese la contraseña',
+           'id':'password1',
            'required':'required',
         }
     ))
@@ -35,6 +36,7 @@ class controlUsuarioForm(forms.ModelForm):
         attrs={
            'class': 'form-control',
            'placeholder':'Ingrese nuevamente la contraseña ',
+           'id':'password2',
            'required':'required',
         }
     ))
@@ -42,7 +44,7 @@ class controlUsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = ('username','email','tipo_documento','numero_documento','nombre','apellidos','edad','plan','ocupacion','sucursal','entrenador','meses')
-    
+        
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')

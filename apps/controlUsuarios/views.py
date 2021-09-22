@@ -184,21 +184,21 @@ class EditarUsuarioPropio(UpdateView):
     template_name = 'dashboard/actualizar_perfil.html'    
     success_url = reverse_lazy('dashboard')
 
-    def dispatch(self, request, *args, **kwargs):
-        id = self.kwargs['pk']
-        if id == request.user.id:
-            self.get_object()
-        else:      
-            return redirect('mi_perfil')
+    # def dispatch(self, request, *args, **kwargs):
+    #     id = self.kwargs['pk']
+    #     if id == request.user.id:
+    #         self.get_object()
+    #     else:      
+    #         return redirect('mi_perfil')
 
-        self.get_object()
-        return super(EditarUsuarioPropio,self).get(request, *args, **kwargs)
+    #     self.get_object()
+    #     return super(EditarUsuarioPropio,self).get(request, *args, **kwargs)
     
-    def get_object(self,queryset=None):        
-        object = getattr(self, 'object', None)
-        if object is None:
-            object = super().get_object(queryset)   
-        return object
+    # def get_object(self,queryset=None):        
+    #     object = getattr(self, 'object', None)
+    #     if object is None:
+    #         object = super().get_object(queryset)   
+    #     return object
 
 def preciosView(request):
     return render(request, 'web/precios.html')

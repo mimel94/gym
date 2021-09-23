@@ -269,6 +269,10 @@ body {
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
+.bg-secondary{
+  background-color: #000000!important;
+
+}
 hr {
   box-sizing: content-box;
   height: 0;
@@ -5001,12 +5005,18 @@ button.bg-light:focus {
   background-color: #dae0e5 !important; }
 
 .bg-dark {
-  background-color: #454545 !important; }
+  display: block;
+  background-color: #ffffff!important; 
+  height: 300px;
+  width: 300px;
+  border-color: #eaeaea;
+  box-shadow: 1px 2px 18px -7px #bebebe;
+}
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #2c2c2c !important; }
+  background-color: #9e9a9a !important; }
 
 .bg-white {
   background-color: #fff !important; }

@@ -78,7 +78,7 @@ class ListarSucursal(ListView):
 class ActualizarSucursal(UpdateView):
     model = Sucursal
     form_class = SucursalForm
-    template_name = 'dashboard/crear_sucursal.html'
+    template_name = 'dashboard/actualizar_sucursal.html'
     success_url = reverse_lazy('listar_sucursales')
 
 class CrearEntrenador(CreateView):
@@ -121,7 +121,7 @@ class CrearPlan(CreateView):
 
 class ActualizarPlan(UpdateView):
     model = Plan
-    template_name = 'dashboard/crear_plan.html'
+    template_name = 'dashboard/actualizar_plan.html'
     form_class = PlanForm
     success_url = reverse_lazy('listar_plan')
 

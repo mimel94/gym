@@ -2,25 +2,42 @@
 {% block titulo%}Crear Usuario {% endblock titulo%}
 {% block cuerpo%}
 <section id="formulario">
-    <div class="container p-5">
-        <form  method="post">
+    <div class="container p-5 cont-rutina-usuario">
+      <h2 class="color">Agregar Rutina a Usuario</h2>
+        <form  method="post" class="mt-5 bg-dark">
             {% csrf_token %}
-            <div class="row">
-              <div class="form-group col">              
-                {{usuario.nombre}}           
-                <input type="hidden" name="pk_usuario" class="form-control" required id="pk_usuario" value="{{usuario.pk}}" />     
+
+            <div class="row justify-content-center align-items-center minh-100 mt-5">
+              <div class="form-group mt-4">  
+                <div class="col">
+                  <label for="name"><strong>Nombre del usuario:</strong></label>  
+                </div>
+                <div class="col">
+                  {{usuario.nombre}} {{usuario.apellidos}}          
+                  <input type="hidden" name="pk_usuario" class="form-control" required id="pk_usuario" value="{{usuario.pk}}" />     
+              </div>          
               </div>
-              <div class="form-group col">    
-                <select name="pk_rutina" class="form-control" >
+            </div> 
+
+            <div class="row justify-content-center align-items-center minh-100 mt-2">
+              <div class="form-group"> 
+                <div class="col">
+                  <label for=""><strong>Rutina:</strong></label> 
+                </div>   
+                <div class="col">
+                  <select name="pk_rutina" class="form-control" >
                     {% for rutina in rutinas.all%}
                     <option value="{{rutina.pk}}">{{rutina.nombre}}</option>                    
                     {% endfor %}
-                  </select>          
-                                   
+                  </select>  
+                </div>                        
               </div>
-            </div>       
+            </div>      
               
-            <button type="submit" class="btn btn-primary">Asignar rutina</button>
+            <div class="row justify-content-center align-items-center minh-100 mt-5">
+              <button type="submit" class="btn btn-primary">Asignar rutina</button>
+            </div>
+            
           </form>
 
     </div>

@@ -1,11 +1,12 @@
 {% extends 'dashboard/index.html' %}
 {% block titulo%}Perfil de usuario{% endblock titulo%}
 {% block cuerpo%}
+{% load extras %}
 <div class="container-fluid">
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h4>Perfil de usuario!</h4>                
+                <h4>Perfil de usuario</h4>                
             </div>
         </div>
         
@@ -21,7 +22,7 @@
                             {% if user.foto %}
                                 <img src="/media/{{user.foto}}" class="img-fluid rounded-circle" alt="">
                             {% else %}
-                                <img src="/static/dashboard/images/profile/profile.png" class="img-fluid rounded-circle" alt="">
+                                <img src="/static/dashboard/images/profile/user.png" class="img-fluid rounded-circle" alt="">
                             {% endif %}
                         </div>
                     </div>
@@ -32,7 +33,7 @@
                                     <div class="col-xl-4 col-sm-4 border-right-1 prf-col">
                                         <div class="profile-name">
                                             <h4 class="text-primary">{{user.nombre}}</h4>
-                                            <p>{{user.ocupacion}}</p>
+                                            <p>Nombre</p>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 col-sm-4 border-right-1 prf-col">
@@ -61,12 +62,15 @@
                 <div class="card-body">
                     <div class="profile-tab">
                         <div class="custom-tab-1">
+                            {% if user.entrenador == false %}
                             <ul class="nav nav-tabs">                                                                
                                 <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link">Sobre mi</a>
                                 </li>                                
                             </ul>
+                            {% endif %}
                             <div class="tab-content">                               
                                 <div id="about-me" class="tab-pane fade active show">
+                                    {% if user.entrenador == false %}
                                     <div class="profile-about-me">
                                         <div class="profile-skills pt-2 border-bottom-1 pb-2">
                                             <h4 class="text-primary mb-4">Tipo de rutina</h4>
@@ -123,7 +127,8 @@
                                                   </table>
                                         </div>
                                     </div>
-                                    <div class="profile-personal-info">
+                                    {% endif %}
+                                    <div class="profile-personal-info ml-2 mt-2">
                                         <h4 class="text-primary mb-4">Información Personal</h4>
                                         <div class="row mb-4">
                                             <div class="col-3">
@@ -163,9 +168,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-4">
+                                    <div class="row mb-4 ml-2">
                                         <div class="col3">
-                                            <a href="{% url 'actualizar_perfil' user.pk %}" class="btn btn-outline-dark btn-rounded pl-4 my-3 my-sm-0 pr-4 mr-3 m-b-10">Actualizar</a>
+                                            <a href="{% url 'actualizar_perfil' user.pk %}" class=" btn btn-primary">Actualizar</a>
                                         </div>
                                     </div>
                                 </div>

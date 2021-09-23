@@ -2,7 +2,8 @@
 {% block titulo%}Crear Titulo {% endblock titulo%}
 {% block cuerpo%}
 <section id="formulario">
-    <div class="container">
+    <div class="container p-5">
+      <h2 class="mb-5">Crear Valoración Médica</h2>
         <form  method="post" >
             {% csrf_token %}
             <div class="form-group">              
@@ -31,7 +32,7 @@
                 {{form.operaciones}}
               </div>              
               {{form.errors}}
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary mt-3">Guardar</button>
           </form>
 
     </div>

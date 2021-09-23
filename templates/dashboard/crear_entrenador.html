@@ -2,7 +2,8 @@
 {% block titulo%}Crear Usuario {% endblock titulo%}
 {% block cuerpo%}
 <section id="formulario">
-    <div class="container">
+    <div class="container p-5">
+      <h2 class="mb-5">Crear Entrenador</h2>
         <form  method="post" >
             {% csrf_token %}
             <div class="row">
@@ -46,8 +47,13 @@
                 {{form.password2.label}}
                 {{form.password2}}
               </div>
-
-            </div>           
+            </div>    
+            <div class="row">
+              <div class="form-group col-3">                
+                {{form.foto.label}}
+                {{form.foto}}
+              </div>
+            </div>        
             
             {{ form.non_field_errors }}
             {{ form.ocupacion.errors }}

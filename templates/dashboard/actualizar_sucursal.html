@@ -1,9 +1,9 @@
 {% extends 'dashboard/index.html' %}
-{% block titulo%}Crear Planes {% endblock titulo%}
+{% block titulo%}Crear Sucursal {% endblock titulo%}
 {% block cuerpo%}
 <section id="formulario">
     <div class="container p-5">
-      <h2 class="mb-5">Crear Plan</h2>
+      <h2 class="mb-5">Actualizar Sedes</h2>
         <form  method="post" >
             {% csrf_token %}
             <div class="row">
@@ -12,18 +12,22 @@
                 {{form.nombre}}
               </div>
               <div class="form-group col">              
-                  {{form.valor.label}}
-                  {{form.valor}}
-              </div>              
-            </div>
-            <div class="row">                          
+                  {{form.direccion.label}}
+                  {{form.direccion}}
+              </div>
+            </div>   
+            <div class="row">
+              <div class="form-group col">              
+                {{form.telefono.label}}
+                {{form.telefono}}
+              </div>
               <div class="form-group col">              
                   {{form.estado.label}}
                   {{form.estado}}
               </div>
             </div>       
               
-            <button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
 
     </div>

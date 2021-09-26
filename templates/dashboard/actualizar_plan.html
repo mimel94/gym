@@ -3,7 +3,7 @@
 {% block cuerpo%}
 <section id="formulario">
     <div class="container p-5">
-      <h2 class="mb-5">Crear Plan</h2>
+      <h2 class="mb-5">Actualizar Plan</h2>
         <form  method="post" >
             {% csrf_token %}
             <div class="row">
@@ -22,8 +22,9 @@
                   {{form.estado}}
               </div>
             </div>       
+                         
               
-            <button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
 
     </div>

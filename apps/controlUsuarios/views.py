@@ -105,7 +105,7 @@ class ListarEntrenador(ListView):
 class ActualizarEntrenador(UpdateView):
     model = Usuario
     form_class = controlUsuarioForm
-    template_name = 'dashboard/crear_entrenador.html'    
+    template_name = 'dashboard/actualizar_entrenador.html'    
     success_url = reverse_lazy('listar_entrenador') 
 
 class ListarPlan(ListView):

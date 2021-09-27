@@ -19,6 +19,10 @@ class controlUsuarioForm(forms.ModelForm):
                 self.fields[field].widget.attrs = {
                     'class': 'form-check'
                 }
+            elif field == 'estado':
+                self.fields[field].widget.attrs = {
+                    'class': 'form-check'
+                }
             else:    
                 self.fields[field].widget.attrs = {
                     'class': 'form-control'
@@ -43,7 +47,7 @@ class controlUsuarioForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ('username','email','tipo_documento','numero_documento','nombre','apellidos','edad','plan','ocupacion','sucursal','entrenador','meses','foto','rutina')
+        fields = ('username','email','tipo_documento','numero_documento','nombre','apellidos','edad','plan','ocupacion','sucursal','entrenador','meses','foto','rutina','estado')
         
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')

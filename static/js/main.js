@@ -51,6 +51,8 @@
         }, 1500, 'easeInOutExpo');
       }
     }
+
+    $('#estado').modal('toggle')
   });
 
   // Mobile Navigation

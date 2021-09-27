@@ -23,6 +23,13 @@ class Login(FormView):
     form_class = FormularioLogin
     success_url = reverse_lazy('dashboard')
 
+    # def get_context_data(self, **kwargs) :
+    #     context = super(Login, self).get_context_data(**kwargs)   
+    #     mensaje = self.kwargs["mensaje"]
+    #     print("EL MENSAJE: ",mensaje)
+    #     context["mensaje"] = mensaje        
+    #     return context
+
     @method_decorator(csrf_protect)
     @method_decorator(never_cache)
     def dispatch(self, request,*args, **kwargs):
@@ -49,8 +56,8 @@ class Dashboard(ListView):
     paginate_by = 10    
 
     def get_queryset(self):
-        consulta = self.model.objects.filter(entrenador=False)
-        return consulta    
+        consulta = self.model.objects.filter(entrenador=False)              
+        return consulta        
 
 class CrearUsuario(CreateView):
     model = Usuario
@@ -189,6 +196,21 @@ class EditarUsuarioPropio(UpdateView):
     form_class = controlUsuarioForm
     template_name = 'dashboard/actualizar_perfil.html'    
     success_url = reverse_lazy('dashboard')
+
+    # def post(self, request, *args, **kwargs):
+    #     numero_documento = request.POST.get('numero_documento')
+    #     form = self.form_class(request.POST)
+    #     form.instance.numero_documento = numero_documento
+    #     print("DOCUMENTO ",numero_documento)
+
+    #     if form.is_valid():
+    #         form.save()        
+    #     return redirect('mi_perfil')
+        
+            
+   
+            
+
 
     # def dispatch(self, request, *args, **kwargs):
     #     id = self.kwargs['pk']

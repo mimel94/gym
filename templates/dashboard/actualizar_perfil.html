@@ -23,7 +23,8 @@
               </div>  
               <div class="form-group col">                
                 {{form.numero_documento.label}}
-                <input type="number" name="numero_documento" value='{{user.numero_documento}}' class="form-control" required id="id_numero_documento" disabled/>             
+                <input type="number" name="numero_documento" value='{{user.numero_documento}}' class="form-control" required id="id_numero_documento" readonly/>      
+                
               </div>
               <div class="form-group col">                
                 {{form.edad.label}}
